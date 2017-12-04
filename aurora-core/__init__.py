@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-from discover import Discover
+import Discover
+import Manager
 from aurora import Aurora
-from Manager import Manager
 
 __all__ = ['Discover', 'Aurora', 'Manager']

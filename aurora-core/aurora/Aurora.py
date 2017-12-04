@@ -91,3 +91,6 @@ class Aurora(object):
 
     def delete(self):
         requests.delete(self.uri)
+
+    def identify(self):
+        requests.put(self.uri + 'identify')
