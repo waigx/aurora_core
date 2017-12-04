@@ -1,4 +1,4 @@
-# aurora-core
+# aurora_core
 A Python Library Controls  [Nanoleaf Light Panels (formerly Aurora)](https://nanoleaf.me/en/consumer-led-lighting/products/smarter-series/nanoleaf-light-panels-smarter-kit/)
 
 ## Usage
