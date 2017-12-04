@@ -7,8 +7,7 @@ The libaray contains three main classes: `Discover`, `Manager`, and `Aurora`. Af
 ```Python
 aur.get.name()				#return the name of the panel cluster
 aur.set.on(False)			#turn off the panel cluster
-aur.set.brightness(80)		#set brightness to 80%
-aur.set.effect('Rainfall')	#set effect to "Rainfall"
+aur.set.effect('Rainfall')		#set effect to "Rainfall"
 ```
 
 To get an `Aurora` instance, the easiest way is using the `Discover` class:
