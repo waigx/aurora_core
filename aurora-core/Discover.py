@@ -3,6 +3,7 @@
 import requests
 import time
 import threading
+from aurora import Aurora 
 from zeroconf import ServiceBrowser, Zeroconf
 
 class DiscoverHandler(object):
@@ -23,7 +24,7 @@ class Discover(object):
     def __init__(self, existed, found_handler, authed_handler, failed_handler):
         self.custom_found_handler = found_handler
         self.custom_authed_handler = authed_handler
-        self.existed_aurora = existed
+        self.existed_aurora = [aurora['raw']['name'] for aurora in existed]
         self.aurora_info_dict = {}
         self.current_authed = None
         self.thread = threading.Thread(target=self.discover_and_auth)
@@ -54,4 +55,4 @@ class Discover(object):
 
     def authed_callback(self, aurora_info, auth_data):
         self.existed_aurora.append(aurora_info['name'])
-        self.custom_authed_handler(aurora_info, auth_data)
+        self.custom_authed_handler(Aurora(aurora_info, auth_data))

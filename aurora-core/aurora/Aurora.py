@@ -19,14 +19,27 @@ class Get(object):
                 ('all_effects', '/effects/effectsList'),
                 ('layout', '/panelLayout/layout')] 
         for api, uri in apis:
-            setattr(self, api, self.__get_value(base_uri + uri))
+            setattr(self, api, self.__get_request(base_uri + uri))
 
-    def __get_value(self, uri):
+        self.__cached = self.all()
+        attrs = [('name', 'name'),
+                 ('serial', 'serialNo'),
+                 ('model', 'model'),
+                 ('firmware', 'firmwareVersion')]
+        for name, attr in attrs:
+            setattr(self, name, self.__get_cached_value(attr))
+
+    def __get_request(self, uri):
         def req():
             r = requests.get(uri)
             return r.json()
         return req
-    
+
+    def __get_cached_value(self, attr):
+        def get():
+            return self.__cached[attr]
+        return get
+
     def effect(self, effect_name=None):
         r = requests.put(self.base_uri + '/effects', json.dumps(
                 {
@@ -68,11 +81,13 @@ class Set(object):
 
 
 class Aurora(object):
-    def __init__(self, uri):
+    def __init__(self, raw, auth):
+        uri = 'http://%s:%d/api/v1/%s' % (raw['server'], raw['port'], auth['auth_token'])
         self.uri = uri
+        self.raw = raw
+        self.auth = auth
         self.get = Get(uri)
         self.set = Set(uri)
 
-
-a = Aurora('')
-print a.set.effect('Snowfall')
+    def delete(self):
+        requests.delete(self.uri)
