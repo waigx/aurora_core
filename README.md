@@ -5,9 +5,9 @@ A Python Library Controls  [Nanoleaf Light Panels (formerly Aurora)](https://nan
 - The libaray contains three main classes: `Discover`, `Manager`, and `Aurora`. After getting an `Aurora` instance, the usage should be straightforward:
 
 ```Python
-aurora.get.name()			#return the name of the panel cluster
-aurora.set.on(False)			#turn off the panel cluster
-aurora.set.effect('Rainfall')		#set effect to "Rainfall"
+aurora.get.name()				#return the name of the panel cluster
+aurora.set.on(False)				#turn off the panel cluster
+aurora.set.effect('Rainfall')			#set effect to "Rainfall"
 ```
 
 - To get an `Aurora` instance, the easiest way is using the `Discover` class:
@@ -15,11 +15,11 @@ aurora.set.effect('Rainfall')		#set effect to "Rainfall"
 ```Python
 from aurora_core import Discover
 
-def authed_handler(aurora):		#the callback function once a new aurora got authed
+def authed_handler(aurora):			#the callback function once a new aurora got authed
 	print aurora.get.name(), aurora.get.serial()
 	aurora.set.brightness(50)
 	
-discover = Discover([], authed_handler)	#[] is all auroras need to be ignored
+discover = Discover([], authed_handler)		#[] is all auroras need to be ignored
 discover.start()
 ```
 
@@ -29,12 +29,12 @@ You have to **hold the power button for ~5 seconds** to give this script permiss
 
 ```Python
 from aurora_core import Manager
-manager = Manager('example_db')		#local data store at `example_db`
+manager = Manager('example_db')			#local data store at `example_db`
 
-for aurora in manager.auroras():	#print out all local aurora names
+for aurora in manager.auroras():		#print out all local aurora names
 	print aurora.get.name()
-manager.save(new_aurora)		#save new_aurora to local
-manager.delete(new_aurora)		#delete new_aurora from local
+manager.save(new_aurora)			#save new_aurora to local
+manager.delete(new_aurora)			#delete new_aurora from local
 ```
 
 Please note that the `Manager` is using `pickle` internally, so no encryption will be applied on the local storage.
