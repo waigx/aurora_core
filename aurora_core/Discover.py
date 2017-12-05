@@ -6,7 +6,7 @@ import threading
 from aurora import Aurora 
 from zeroconf import ServiceBrowser, Zeroconf
 
-def __dummpy_handler(*args):
+def _dummpy_handler(*args):
     pass
 
 class DiscoverHandler(object):
@@ -24,7 +24,7 @@ class DiscoverHandler(object):
 
 
 class Discover(object):
-    def __init__(self, existed, authed_handler, found_handler=__dummpy_handler, failed_handler=__dummpy_handler):
+    def __init__(self, existed, authed_handler, found_handler=_dummpy_handler, failed_handler=_dummpy_handler):
         self.custom_found_handler = found_handler
         self.custom_authed_handler = authed_handler
         self.existed_aurora = [aurora['raw']['name'] for aurora in existed]
