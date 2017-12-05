@@ -5,9 +5,9 @@ A Python Library Controls  [Nanoleaf Light Panels (formerly Aurora)](https://nan
 - The libaray contains three main classes: `Discover`, `Manager`, and `Aurora`. After getting an `Aurora` instance, the usage should be straightforward:
 
 ```Python
-aur.get.name()				#return the name of the panel cluster
-aur.set.on(False)			#turn off the panel cluster
-aur.set.effect('Rainfall')		#set effect to "Rainfall"
+aurora.get.name()			#return the name of the panel cluster
+aurora.set.on(False)			#turn off the panel cluster
+aurora.set.effect('Rainfall')		#set effect to "Rainfall"
 ```
 
 - To get an `Aurora` instance, the easiest way is using the `Discover` class:
@@ -25,7 +25,7 @@ discover.start()
 
 You have to **hold the power button for ~5 seconds** to give this script permission to access the Light Panels. This script will set the cluster brightness to 50% after finishing authorization.
 
-- Apparently users do not like to authenticate/permit access everytime. `Manager` provides basic `Aurora` object management, including data persistent:
+- Apparently no one want to authenticate/permit access everytime. `Manager` provides basic `Aurora` object management, including data persistence:
 
 ```Python
 from aurora_core import Manager
