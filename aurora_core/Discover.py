@@ -27,7 +27,7 @@ class Discover(object):
     def __init__(self, existed, authed_handler, found_handler=_dummpy_handler, failed_handler=_dummpy_handler):
         self.custom_found_handler = found_handler
         self.custom_authed_handler = authed_handler
-        self.existed_aurora = [aurora['raw']['name'] for aurora in existed]
+        self.existed_aurora = [aurora.raw['name'] for aurora in existed]
         self.aurora_info_dict = {}
         self.current_authed = None
         self.thread = threading.Thread(target=self.__discover_and_auth)

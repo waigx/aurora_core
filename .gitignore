@@ -6,3 +6,6 @@
 
 # VIM
 *.sw*
+
+# Project
+example_db
